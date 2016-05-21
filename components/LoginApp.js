@@ -10,6 +10,11 @@ import { hashHistory, Router, Route, Link, withRouter } from 'react-router'
 import LoginFooter from './FooterBanner';
 import LoginHeader from './HeaderBanner';
 import NavBar from './NavBar';
+import AppGrid from './AppGrid';
+
+
+// How many columns should be used for the app selection screen.
+const numberOfColumns = 3;
 
 
 // Name:		emailEntry
@@ -58,6 +63,8 @@ const PasswordEntry = () => {
 //				if they are found in the system their name, email, and picture
 //				are displayed.
 class LoginApp extends React.Component {
+	// Name:		Render
+	// Description:	Renders the login controls for the page.
 	render() {
 		var state = {
 			loginState: 'Login'
@@ -69,10 +76,11 @@ class LoginApp extends React.Component {
 				{ (state.loginState === 'AppSelect') ? <NavBar /> : '' }
 				<form class="form-signin">
 					<h2 class="form-signin-heading">Please sign in</h2>
-					{ (state.loginState === 'Login') ? EmailEntry() : UserInfo(state) }
+					{ (state.loginState === 'Login') ? <EmailEntry /> : UserInfo(state) }
 					<PasswordEntry />
 					<button class="btn btn-lg btn-primary btn-block" type="submit">SIGN IN</button>
 				</form>
+				<AppGrid columns={ numberOfColumns } />
 				<LoginFooter status={ state.loginState } />
 			</div>
 		);

@@ -6,7 +6,10 @@ import React from 'react'
 import { render } from 'react-dom'
 
 
-
+// Name:		LoginFooter
+// Description:	A component that displays a footer on the page, including
+//				copyright information and the app logo banner on the second
+//				step of the login process.
 const LoginFooter = ({status}) => {
 	console.log (status);
 	return (<div>

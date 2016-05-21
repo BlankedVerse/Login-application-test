@@ -9,6 +9,7 @@
 // Description:	A validation object, containing a list of known users,
 //				and methods to check given 
 class Validation {
+	// A sample listing of user records.
 	let userRecords = [{
 		fullName: 'Jeffery Aramini',
 		email: 'jeff_aramini@ihealthsolutions.net';

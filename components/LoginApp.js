@@ -7,12 +7,15 @@ import { render } from 'react-dom'
 import { hashHistory, Router, Route, Link, withRouter } from 'react-router'
 // TODO: Import css
 
+import LoginFooter from './FooterBanner';
+import LoginHeader from './HeaderBanner';
+import NavBar from './NavBar';
 
 
 // Name:		emailEntry
 // Description: A component that allows the user to type in their email address.
 //				Is replaced with userInfo() when a valid email has been entered.
-const emailEntry = () => {
+const EmailEntry = () => {
 	return (<div>
 			<input type="email" id="inputEmail" class="form-control" placeholder="EMAIL" required autofocus />
 		</div>
@@ -26,9 +29,9 @@ const emailEntry = () => {
 //				picture. Replaces emailEntry() once a valid email has been entered.
 // Parameter:	The user's status, containing userImage, userName, and userEmail
 //				values.
-const userInfo = (userStatus) => {
+const UserInfo = (userStatus) => {
 	return (<div>
-			<img src={ userStatus.userImage }/>
+			<img src={ userStatus.userImage } />
 			<h2>{ userStatus.userName }</h2>
 			<h3>{ userStatus.userEmail }</h3>
 		</div>
@@ -39,7 +42,7 @@ const userInfo = (userStatus) => {
 
 // Name:		passwordEntry()
 // Description:	A component that allows the user to enter their password.
-const passwordEntry = () => {
+const PasswordEntry = () => {
 	return (<div>
 			<input type="password" id="inputPassword" class="form-control" placeholder="PASSWORD" required />
 		</div>
@@ -62,12 +65,15 @@ class LoginApp extends React.Component {
 		
 		// Only display the email entry on the first login page, not the second.
 		return (<div class="container" >
+				<LoginHeader status={ state.loginState } />
+				{ (state.loginState === 'AppSelect') ? <NavBar /> : '' }
 				<form class="form-signin">
 					<h2 class="form-signin-heading">Please sign in</h2>
-					{ (state.loginState === 'Login') ? emailEntry() : userInfo(state) }
-					{ passwordEntry() }
+					{ (state.loginState === 'Login') ? EmailEntry() : UserInfo(state) }
+					<PasswordEntry />
 					<button class="btn btn-lg btn-primary btn-block" type="submit">SIGN IN</button>
 				</form>
+				<LoginFooter status={ state.loginState } />
 			</div>
 		);
 	}

@@ -50,9 +50,13 @@ const CheckPassword = () => {
 			});
 		}
 		else {
-			document.getElementById("inputPassword").className 
-				= "form-control signinForm__field animated shake";
+			document.getElementById("passwordWrapper").className 
+				= "signinForm__fieldWrapper animated shake";
 		}
+	}
+	else {
+		document.getElementById("passwordWrapper").className 
+			= "signinForm__fieldWrapper animated shake";
 	}
 }
 
@@ -97,7 +101,7 @@ const UserInfo = () => {
 // Name:		passwordEntry()
 // Description:	A component that allows the user to enter their password.
 const PasswordEntry = () => {
-	return (<div className="signinForm__fieldWrapper">
+	return (<div className="signinForm__fieldWrapper" id="passwordWrapper">
 			<img src="../assets/lockIcon.png" 
 				className="signinForm__field__fieldIcon"/>
 			<input type="password" id="inputPassword" 

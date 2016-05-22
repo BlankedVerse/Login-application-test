@@ -1,4 +1,6 @@
 // Filename:	AppGrid.js
+// Author:		Colin McMillan
+// Date:		2016 May
 // Description:	A component that arranges links as a series of
 //				image buttons arranged in a grid. 
 

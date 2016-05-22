@@ -1,4 +1,6 @@
 // Filename:	stateManagement.js
+// Author:		Colin McMillan
+// Date:		2016 May
 // Description:	Provides state management for the login page application using
 //				Redux.
 

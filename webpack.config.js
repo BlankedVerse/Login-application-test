@@ -1,4 +1,6 @@
 // Filename:	webpack.config.js
+// Author:		Colin McMillan
+// Date:		2016 May
 // Description:	The Webpack configuration file for the Login application
 //				page.
 

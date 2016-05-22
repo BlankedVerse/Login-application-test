@@ -1,4 +1,6 @@
 // Filename:	validation.js
+// Author:		Colin McMillan
+// Date:		2016 May
 // Description:	Provides login validation for the Washington State Department
 //				of Health site.
 //				At present, all validation is done client side against a

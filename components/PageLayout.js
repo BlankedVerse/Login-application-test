@@ -1,4 +1,6 @@
 // Filename:	PageLayout.js
+// Author:		Colin McMillan
+// Date:		2016 May
 // Description:	Defines React components for displaying the main page
 //				of the application.
 

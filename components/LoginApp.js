@@ -1,4 +1,6 @@
 // Filename:	LoginApp.js
+// Author:		Colin McMillan
+// Date:		2016 May
 // Description:	Defines React components used for logging in to the Washington
 //				State Department of Health website.
 

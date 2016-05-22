@@ -1,4 +1,6 @@
 // Filename:	main.js
+// Author:		Colin McMillan
+// Date:		2016 May
 // Description:	The mainline for the Login application for the 
 //				Washington State Department of Health application page.
 

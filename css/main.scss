@@ -1,50 +1,68 @@
 @charset "UTF-8";
 
+/* Filename: main.scss
+* Author: Colin McMillan
+* Date: 2016 May
+* Description: Templates the styles for the WSDoH app login pages. 
+*/
+
+// Colours
 $primaryColour: #00479f;
 $backgroundColour: #ffffff;
 $edgeColour: #000000;
 $gridEdgeColour: rgba(0, 0, 0, .05);
 
+
+// Text styles
 $typeface: "Helvetica";
 $boldThickness: 800;
 
-$copyrightTextSize: 12px;
-$helpTextSize: 12px;
-$helpPadding: 10px;
 
-$signinButtonTextSize: 17px;
-$signinButtonWidth: 300px;
-$signinButtonHeight: 55px;
+// Login page values
+$portraitWidth: 100px;
+$portraitHeight: 100px;
+$nameTextSize: 20px;
+$emailTextSize: 18px;
+
 $signinCurvature: 37px;
 $signinFieldPadding: 20px;
 $signinFieldIndent: 38px;
 $firstFieldPadding: 170px;
+
+$signinButtonTextSize: 17px;
+$signinButtonWidth: 300px;
+$signinButtonHeight: 55px;
+
 $signinFieldIconIndentX: 15px;
 $signinFieldIconIndentY: 18px;
 $signinFieldIconSize: 20px;
 
+$helpTextSize: 12px;
+$helpPadding: 10px;
+
+
+// Text entry values
 $textEntryTextSize: 14px;
 $textEntryLogoHeight: 20px;
 $textEntryLogoWidth: 20px;
 
-$portraitWidth: 100px;
-$portraitHeight: 100px;
 
-$nameTextSize: 20px;
-$emailTextSize: 18px;
-
+// Logo dimensions
 $logoWidth: 250px;
 $logoHeight: 124px;
 $logoTopPad: 60px;
 $logoBotPad: 20px;
 
+// Grid button values
 $gridBoxWidth: 130px;
 $gridBoxHeight: 130px;
 $gridBoxPadding: 15px;
 
+// Grid values
 $maxGridItemWidth: 60px;
 $maxGridItemHeight: 80px;
 
+// NavBar values
 $navBarHoverDistance: 10px;
 $navIconPadding: 7.5px;
 $smallNavIconWidth: 19px;
@@ -52,14 +70,16 @@ $smallNavIconHeight: 19px;
 $largeNavIconWidth: 40px;
 $largeNavIconHeight: 40px;
 
+// Footer values
+$footerMargin: 130px;
 $appLogoStripWidth: 400px;
 $appLogoStripHeight: 22px;
 $appLogoStripMargin: 40px;
-
-$footerMargin: 130px;
-
+$copyrightTextSize: 12px;
 
 
+
+// The main sign in form
 .signinForm {
   margin: auto;
   width: $signinButtonWidth;
@@ -239,6 +259,7 @@ $footerMargin: 130px;
 }
 
 
+// An animation effect for emphasizing Grid Tiles when hovered.
 .shadowOnHover:hover {
 	box-shadow: 0 1px 1px;
 }

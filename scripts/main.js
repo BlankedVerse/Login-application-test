@@ -13,6 +13,9 @@ import PageLayout from '../components/PageLayout';
 import LoginApp from '../components/LoginApp';
 import AppGrid from '../components/AppGrid';
 
+require("../css/main.scss");
+
+
 
 // The routing information used to control the page's appearance.
 const route = (
@@ -41,9 +44,10 @@ const renderPage = () => {
 	else if (loginStatus === 'LoggedIn') {
 		hashHistory.push('/apps');
 	}
-	
-	ReactDOM.render(route, document.getElementById('loginApp'));
 }
 
 loginStore.subscribe(renderPage);
+
 renderPage();
+
+ReactDOM.render(route, document.getElementById('loginApp'));

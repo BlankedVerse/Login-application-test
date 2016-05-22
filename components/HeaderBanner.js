@@ -16,7 +16,7 @@ const LoginHeader = () => {
 	
 	return (<div>
 			{ (status.loginState === 'LoggedIn') ? <NavBar /> : '' }
-			<img src='../assets/wdohLogo.png' />
+			<img class="mainLogo" src='../assets/wdohLogo.png' />
 		</div>
 	);
 }

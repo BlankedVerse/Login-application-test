@@ -67,8 +67,8 @@ const appList = [{
 //				appLink - The link to load when the button is pressed.	
 const AppButton = ({ appImage, appLink }) => {
 	return (
-		<a href={ appLink }>
-			<img src={ appImage } />
+		<a class=".appMenuButton" href={ appLink }>
+			<img class=".appMenuButton__image" src={ appImage } />
 		</a>
 	);
 }
@@ -113,7 +113,7 @@ class AppGrid extends React.Component {
 		}
 		
 		
-		return(<table><tbody>
+		return(<table class=".appGrid"><tbody>
 				{rows.map(row =>
 					row
 				)}

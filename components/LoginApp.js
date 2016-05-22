@@ -63,7 +63,7 @@ const CheckPassword = () => {
 //				has been entered.
 const EmailEntry = () => {
 	return (<div>
-			<input type="email" id="inputEmail" class="form-control" 
+			<input type="email" id="inputEmail" class="form-control signinForm__field" 
 				placeholder="EMAIL" required autofocus />
 		</div>
 	);
@@ -81,9 +81,9 @@ const UserInfo = () => {
 	let userStatus = loginStore.getState()
 	
 	return (<div>
-			<img src={ userStatus.userImage } />
-			<h2>{ userStatus.userName }</h2>
-			<h3>{ userStatus.userEmail }</h3>
+			<img class="signinForm__portrait" src={ userStatus.userImage } />
+			<h2 class="signinForm__nameLabel">{ userStatus.userName }</h2>
+			<h3 class="signinForm__emailLabel">{ userStatus.userEmail }</h3>
 		</div>
 	);
 }
@@ -94,7 +94,9 @@ const UserInfo = () => {
 // Description:	A component that allows the user to enter their password.
 const PasswordEntry = () => {
 	return (<div>
-			<input type="password" id="inputPassword" class="form-control" placeholder="PASSWORD" required />
+			<input type="password" id="inputPassword" 
+				class="form-control signinForm__field" 
+				placeholder="PASSWORD" required />
 		</div>
 	);
 }
@@ -113,14 +115,15 @@ class LoginApp extends React.Component {
 	render() {
 		let userStatus = loginStore.getState();
 		
-		return (<form class="form-signin">
+		return (<form class="form-signin signinForm">
 				{ (userStatus.loginState === 'Login') ? <EmailEntry /> :
 					<UserInfo /> }
 				<PasswordEntry />
-				<button class="btn btn-lg btn-primary btn-block"
+				<button class="btn btn-lg btn-primary btn-block signinForm__button"
 					id='submitLogin' type="submit">
 					{ (userStatus.loginState === 'Login') ? 'SIGN IN' : 'NEXT' }
 				</button>
+				<a class="signinForm__help">Need help?</a>
 			</form>
 		);
 	}

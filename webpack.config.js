@@ -9,7 +9,7 @@ module.exports = {
 	entry: './scripts/main.js',
 	output: {
 		path: './',
-		publicPath: '/scripts/',
+		publicPath: '/scripts',
 		filename: 'index.js',
 	},
 	devServer: {
@@ -26,8 +26,8 @@ module.exports = {
 			}
 		},
 		{
-			test: /\.scss/,
-			loaders: ['style', 'css', 'sass'],
+			test: /\.scss$/,
+			loader: "style!css!sass-loader",
 		},
 		{
 			test: /\.html/,

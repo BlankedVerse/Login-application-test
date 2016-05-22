@@ -18,7 +18,7 @@ const LoginFooter = () => {
 	return (<div>
 			{ (status.loginState === 'Login2') ? 
 				<img src='../assets/logobanner.png' /> : '' }
-			<p>&#169; Scientific Technologies Corporation 2016</p>
+			<p class="copyright">&#169; Scientific Technologies Corporation 2016</p>
 		</div>
 	);
 }

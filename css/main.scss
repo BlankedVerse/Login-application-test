@@ -1,0 +1,156 @@
+@charset "UTF-8";
+
+$primaryColour: #00479f;
+$backgroundColour: #ffffff;
+$edgeColour: #000000;
+
+$typeface:  HelveticaNeue;
+
+$copyrightTextSize: 12px;
+$helpTextSize: 13px;
+
+$signinButtonTextSize: 17px;
+$signinButtonWidth: 300px;
+$signinButtonHeight: 55px;
+
+$textEntryTextSize: 14px;
+$textEntryLogoHeight: 20px;
+$textEntryLogoWidth: 20px;
+
+$portraitWidth: 100px;
+$portraitHeight: 100px;
+
+$nameTextSize: 20px;
+$emailTextSize: 20px;
+
+$logoWidth: 250px;
+$logoHeight: 124px;
+
+$gridBoxWidth: 130px;
+$gridBoxHeight: 130px;
+$gridBoxPadding: 10px;
+
+$maxGridItemWidth: 60px;
+$maxGridItemHeight: 80px;
+
+$navIconPadding: 7.5px;
+$smallNavIconWidth: 19px;
+$smallNavIconHeight: 19px;
+$largeNavIconWidth: 40px;
+$largeNavIconHeight: 40px;
+
+$appLogoStripWidth: 400px;
+$appLogoStripHeight: 22px;
+
+
+
+.signinForm {
+  margin: auto;
+  width: $signinButtonWidth;
+  height: $signinButtonHeight;
+  
+  font-family: $typeface;
+  color: $edgeColour;
+  
+  @at-root #{&}__portrait {
+    width: $portraitWidth;
+    width: $portraitHeight;
+  }
+  
+  @at-root #{&}__nameLabel {
+    font-size: $nameTextSize;
+    font-style: bold;
+	
+	border-radius: 37px;
+  }
+  
+  @at-root #{&}__emailLabel {
+    font-size: $emailTextSize;
+  }
+  
+  @at-root #{&}__field {
+    border-color: $primaryColour;
+    font-size: $textEntryTextSize;
+	
+	border-radius: 37px;
+  
+    @at-root #{&}--fieldError {
+      
+    }
+  }
+  
+  @at-root #{&}__button {
+    background-color: $primaryColour;
+    color: $backgroundColour;
+    font-size: $signinButtonTextSize;
+    
+    font-style: bold;
+  }
+  
+  @at-root #{&}__help {
+    color: $primaryColour;
+    font-size: $helpTextSize;
+  }
+}
+
+
+.mainLogo {
+  margin: auto;
+  width: $logoWidth;
+  height: $logoHeight;
+}
+
+
+.appGrid {
+  margin: auto;
+  width: (($gridBoxWidth + $gridBoxPadding * 2) * 3);
+}
+
+
+.appMenuButton {
+  width: $gridBoxWidth;
+  height: $gridBoxHeight;
+  
+  border-color: $backgroundColour;
+  
+  padding: $gridBoxPadding;
+  
+  @at-root #{&}__image {
+    width: $maxGridItemWidth;
+    height: $maxGridItemHeight;
+  }
+  
+  @at-root #{&}--hover {
+    box-shadow: 1px, 1px, 1px, $edgeColour;
+  }
+}
+
+
+.navBar {
+  padding: $navIconPadding;
+  position: absolute;
+  right: 0px;
+  width: ($largeNavIconWidth * 4);
+  
+  @at-root #{&}__avatar {
+    width: $largeNavIconWidth;
+    height: $largeNavIconHeight;
+  }
+  
+  @at-root #{&}__icon {
+    width: $smallNavIconWidth;
+    height: $smallNavIconHeight;
+  }
+}
+
+
+.appStrip {
+  width: appLogoStripWidth;
+  height: appLogoStripHeight;
+}
+
+
+.copyright {
+  font-family: $typeface;
+  font-size: $copyrightTextSize;
+}

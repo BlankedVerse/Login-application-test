@@ -1,0 +1,74 @@
+.signinForm {
+  margin: auto;
+  width: 300px;
+  height: 55px;
+  font-family: HelveticaNeue;
+  color: #000000;
+}
+.signinForm__portrait {
+  width: 100px;
+  width: 100px;
+}
+.signinForm__nameLabel {
+  font-size: 20px;
+  font-style: bold;
+}
+.signinForm__emailLabel {
+  font-size: 20px;
+}
+.signinForm__field {
+  border-color: #00479f;
+  font-size: 14px;
+}
+.signinForm__button {
+  background-color: #00479f;
+  color: #ffffff;
+  font-size: 17px;
+  font-style: bold;
+}
+.signinForm__help {
+  color: #00479f;
+  font-size: 13px;
+}
+
+.mainLogo {
+  margin: auto;
+  width: 250px;
+  height: 124px;
+}
+
+.appGrid {
+  margin: auto;
+  width: 450px;
+}
+
+.appMenuButton {
+  width: 130px;
+  height: 130px;
+  border-color: #ffffff;
+  padding: 10px;
+}
+.appMenuButton__image {
+  width: 60px;
+  height: 80px;
+}
+.appMenuButton--hover {
+  box-shadow: 1px, 1px, 1px, #000000;
+}
+
+.navBar {
+  padding: 7.5px;
+}
+.navBar__avatar {
+  width: 40px;
+  height: 40px;
+}
+.navBar__icon {
+  width: 19px;
+  height: 19px;
+}
+
+.copyright {
+  font-family: HelveticaNeue;
+  font-size: 12px;
+}

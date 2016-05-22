@@ -16,19 +16,20 @@ const NavBar = () => {
 	let userStatus = loginStore.getState();
 	
 	if (userStatus !== undefined) {
+
 		if (userStatus.userImage !== undefined) {
-			imageTag = <img src={ userStatus.userImage } />;
+			imageTag = <img class="navBar__avatar" src={ userStatus.userImage } />;
 		}
 	}
 	
-	return (<div>
-			<button>
+	return (<div class="navBar">
+			<button class="navBar__icon">
 				<img src='../assets/help.png' />
 			</button>
-			<button>
+			<button class="navBar__icon">
 				<img src='../assets/notifications.png' />
 			</button>
-			<button>
+			<button class="navBar__icon">
 				<img src='../assets/apps.png' />
 			</button>
 			{ imageTag }

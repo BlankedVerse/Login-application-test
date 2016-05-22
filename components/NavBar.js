@@ -18,20 +18,21 @@ const NavBar = () => {
 	if (userStatus !== undefined) {
 
 		if (userStatus.userImage !== undefined) {
-			imageTag = <img class="navBar__avatar" src={ userStatus.userImage } />;
+			imageTag = <img className="navBar__avatar" src={ userStatus.userImage } />;
 		}
 	}
 	
-	return (<div class="navBar">
-			<button class="navBar__icon">
-				<img src='../assets/help.png' />
-			</button>
-			<button class="navBar__icon">
-				<img src='../assets/notifications.png' />
-			</button>
-			<button class="navBar__icon">
-				<img src='../assets/apps.png' />
-			</button>
+	return (<div className="navBar">
+			
+			<a href='#'>
+				<img className='navBar__icon' src='../assets/help.png' />
+			</a>
+			<a href='#'>
+				<img className='navBar__icon' src='../assets/notifications.png' />
+			</a>
+			<a href='#'>
+				<img className='navBar__icon' src='../assets/apps.png' />
+			</a>
 			{ imageTag }
 		</div>
 	);

@@ -40,17 +40,16 @@ const CheckEmail = () => {
 const CheckPassword = () => {
 	let enteredPass = document.getElementById("inputPassword").value;
 	let userEmail = loginStore.getState().userEmail;
-
 	
 	if (userEmail !== undefined) {
 		if (Validation.prototype.checkPassword(userEmail, enteredPass)) {
-			console.log("Logging in");
 			loginStore.dispatch({
 				type: 'LOG_IN'
 			});
 		}
 		else {
-			//TODO: Shake password field on failure.
+			document.getElementById("inputPassword").className 
+				= "form-control signinForm__field animated shake";
 		}
 	}
 }
@@ -62,8 +61,11 @@ const CheckPassword = () => {
 //				address. Is replaced with userInfo() when a valid email 
 //				has been entered.
 const EmailEntry = () => {
-	return (<div>
-			<input type="email" id="inputEmail" class="form-control signinForm__field" 
+	return (<div className="signinForm__fieldWrapper">
+			<img src="../assets/personIcon.png" 
+				className="signinForm__field__fieldIcon"/>
+			<input type="email" id="inputEmail" 
+				className="form-control signinForm__field signinForm__field--firstField" 
 				placeholder="EMAIL" required autofocus />
 		</div>
 	);
@@ -80,10 +82,10 @@ const EmailEntry = () => {
 const UserInfo = () => {
 	let userStatus = loginStore.getState()
 	
-	return (<div>
-			<img class="signinForm__portrait" src={ userStatus.userImage } />
-			<h2 class="signinForm__nameLabel">{ userStatus.userName }</h2>
-			<h3 class="signinForm__emailLabel">{ userStatus.userEmail }</h3>
+	return (<div className="signinForm__profileWrapper">
+			<img className="signinForm__portrait" src={ userStatus.userImage } />
+			<h1 className="signinForm__nameLabel">{ userStatus.userName }</h1>
+			<p className="signinForm__emailLabel">{ userStatus.userEmail }</p>
 		</div>
 	);
 }
@@ -93,9 +95,11 @@ const UserInfo = () => {
 // Name:		passwordEntry()
 // Description:	A component that allows the user to enter their password.
 const PasswordEntry = () => {
-	return (<div>
+	return (<div className="signinForm__fieldWrapper">
+			<img src="../assets/lockIcon.png" 
+				className="signinForm__field__fieldIcon"/>
 			<input type="password" id="inputPassword" 
-				class="form-control signinForm__field" 
+				className="form-control signinForm__field" 
 				placeholder="PASSWORD" required />
 		</div>
 	);
@@ -115,15 +119,15 @@ class LoginApp extends React.Component {
 	render() {
 		let userStatus = loginStore.getState();
 		
-		return (<form class="form-signin signinForm">
+		return (<form className="form-signin signinForm">
 				{ (userStatus.loginState === 'Login') ? <EmailEntry /> :
 					<UserInfo /> }
 				<PasswordEntry />
-				<button class="btn btn-lg btn-primary btn-block signinForm__button"
+				<button className="btn btn-lg btn-primary btn-block signinForm__button"
 					id='submitLogin' type="submit">
 					{ (userStatus.loginState === 'Login') ? 'SIGN IN' : 'NEXT' }
 				</button>
-				<a class="signinForm__help">Need help?</a>
+				<a className="signinForm signinForm__help">Need help?</a>
 			</form>
 		);
 	}

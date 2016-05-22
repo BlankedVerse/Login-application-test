@@ -3,15 +3,25 @@
 $primaryColour: #00479f;
 $backgroundColour: #ffffff;
 $edgeColour: #000000;
+$gridEdgeColour: rgba(0, 0, 0, .05);
 
-$typeface:  HelveticaNeue;
+$typeface: "Helvetica";
+$boldThickness: 800;
 
 $copyrightTextSize: 12px;
-$helpTextSize: 13px;
+$helpTextSize: 12px;
+$helpPadding: 10px;
 
 $signinButtonTextSize: 17px;
 $signinButtonWidth: 300px;
 $signinButtonHeight: 55px;
+$signinCurvature: 37px;
+$signinFieldPadding: 20px;
+$signinFieldIndent: 38px;
+$firstFieldPadding: 170px;
+$signinFieldIconIndentX: 15px;
+$signinFieldIconIndentY: 18px;
+$signinFieldIconSize: 20px;
 
 $textEntryTextSize: 14px;
 $textEntryLogoHeight: 20px;
@@ -21,18 +31,21 @@ $portraitWidth: 100px;
 $portraitHeight: 100px;
 
 $nameTextSize: 20px;
-$emailTextSize: 20px;
+$emailTextSize: 18px;
 
 $logoWidth: 250px;
 $logoHeight: 124px;
+$logoTopPad: 60px;
+$logoBotPad: 20px;
 
 $gridBoxWidth: 130px;
 $gridBoxHeight: 130px;
-$gridBoxPadding: 10px;
+$gridBoxPadding: 15px;
 
 $maxGridItemWidth: 60px;
 $maxGridItemHeight: 80px;
 
+$navBarHoverDistance: 10px;
 $navIconPadding: 7.5px;
 $smallNavIconWidth: 19px;
 $smallNavIconHeight: 19px;
@@ -41,67 +54,116 @@ $largeNavIconHeight: 40px;
 
 $appLogoStripWidth: 400px;
 $appLogoStripHeight: 22px;
+$appLogoStripMargin: 40px;
+
+$footerMargin: 130px;
 
 
 
 .signinForm {
   margin: auto;
   width: $signinButtonWidth;
-  height: $signinButtonHeight;
   
-  font-family: $typeface;
   color: $edgeColour;
   
+  @at-root #{&}__profileWrapper {
+    margin: $signinFieldPadding;
+  }
+  
   @at-root #{&}__portrait {
+    display: block;
+    margin: auto;
+  
     width: $portraitWidth;
     width: $portraitHeight;
   }
   
   @at-root #{&}__nameLabel {
+    font-family: $typeface;
     font-size: $nameTextSize;
-    font-style: bold;
+    font-weight: $boldThickness;
+    text-align: center;
 	
-	border-radius: 37px;
+	margin-bottom: 0px;
   }
   
   @at-root #{&}__emailLabel {
+    font-family: $typeface;
     font-size: $emailTextSize;
+    text-align: center;
   }
   
   @at-root #{&}__field {
+    font-family: $typeface;
     border-color: $primaryColour;
     font-size: $textEntryTextSize;
 	
-	border-radius: 37px;
+	height: $signinButtonHeight;
+	margin-bottom: $signinFieldPadding;
+	
+	border-radius: $signinCurvature;
+	
+	text-indent: $signinFieldIndent;
+	
+	@at-root #{&}--firstField {
+	  margin-top: $firstFieldPadding;
+	}
+	
+	
+	@at-root #{&}__fieldIcon {
+	  position: absolute;
+	  
+	  height: $signinFieldIconSize;
+	  width: $signinFieldIconSize;
+	  
+	  left: $signinFieldIconIndentX;
+	  top: $signinFieldIconIndentY;
+	}
+  }
   
-    @at-root #{&}--fieldError {
-      
-    }
+  @at-root #{&}__fieldWrapper {
+    position: relative;
   }
   
   @at-root #{&}__button {
+    font-family: $typeface;
+    font-weight: $boldThickness;
     background-color: $primaryColour;
     color: $backgroundColour;
     font-size: $signinButtonTextSize;
-    
-    font-style: bold;
+	
+	height: $signinButtonHeight;
+	
+	border-radius: $signinCurvature;
   }
   
   @at-root #{&}__help {
-    color: $primaryColour;
+	display: block;
+    width: $signinButtonWidth;
+	padding: $helpPadding;
+	
+    font-family: $typeface;
     font-size: $helpTextSize;
+    text-align: center;
+	
+    color: $primaryColour;
   }
 }
 
 
 .mainLogo {
+  display: block;
   margin: auto;
   width: $logoWidth;
   height: $logoHeight;
+  
+  margin-top: $logoTopPad;
+  margin-bottom: $logoBotPad;
 }
 
 
 .appGrid {
+  display: block;
   margin: auto;
   width: (($gridBoxWidth + $gridBoxPadding * 2) * 3);
 }
@@ -111,13 +173,18 @@ $appLogoStripHeight: 22px;
   width: $gridBoxWidth;
   height: $gridBoxHeight;
   
-  border-color: $backgroundColour;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $gridEdgeColour;
   
-  padding: $gridBoxPadding;
+  margin: $gridBoxPadding;
   
   @at-root #{&}__image {
-    width: $maxGridItemWidth;
-    height: $maxGridItemHeight;
+    display: block;
+	margin: auto;
+	margin-top: 20px;
+    max-width: $maxGridItemWidth;
+    max-height: $maxGridItemHeight;
   }
   
   @at-root #{&}--hover {
@@ -127,30 +194,51 @@ $appLogoStripHeight: 22px;
 
 
 .navBar {
-  padding: $navIconPadding;
-  position: absolute;
-  right: 0px;
+  position: fixed;
+  right: $navBarHoverDistance;
+  top: $navBarHoverDistance;
   width: ($largeNavIconWidth * 4);
   
   @at-root #{&}__avatar {
+    margin: $navIconPadding;
+	
     width: $largeNavIconWidth;
     height: $largeNavIconHeight;
   }
   
   @at-root #{&}__icon {
+    margin: $navIconPadding;
+	
     width: $smallNavIconWidth;
     height: $smallNavIconHeight;
   }
 }
 
 
-.appStrip {
-  width: appLogoStripWidth;
-  height: appLogoStripHeight;
+.footer {
+  margin: auto;
+  width: 100%;
+  
+  margin-top: $footerMargin;
+  
+  @at-root #{&}__appStrip {
+    display: block;
+    margin: auto;
+	width: $appLogoStripWidth;
+	height: $appLogoStripHeight;
+	
+	margin-bottom: $appLogoStripMargin;
+  }
+  
+  @at-root #{&}__copyright {
+    font-family: $typeface;
+    font-size: $copyrightTextSize;
+	
+	text-align: center;
+  }
 }
 
 
-.copyright {
-  font-family: $typeface;
-  font-size: $copyrightTextSize;
+.shadowOnHover:hover {
+	box-shadow: 0 1px 1px;
 }

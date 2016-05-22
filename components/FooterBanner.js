@@ -15,10 +15,10 @@ import loginStore from '../scripts/stateManagement';
 const LoginFooter = () => {
 	let status = loginStore.getState();
 	
-	return (<div>
+	return (<div className="footer">
 			{ (status.loginState === 'Login2') ? 
-				<img src='../assets/logobanner.png' /> : '' }
-			<p class="copyright">&#169; Scientific Technologies Corporation 2016</p>
+				<img className="footer__appStrip" src='../assets/logobanner.png' /> : '' }
+			<p className="footer__copyright">&#169; Scientific Technologies Corporation 2016</p>
 		</div>
 	);
 }

@@ -8,24 +8,37 @@ import Redux from 'redux'
 // Name:		login
 // Description: Takes the current state and an action and
 //				returns the new state created by that action.
+//				The reducer function for the LoginApp.
 const login = (state = 0, action) => {
-	// TODO: Implement state management.
-	return (Object.assign({}, state,
-			reassigned: true
-		)
-	);
+	let newState = {};
+	
+	
+	switch (action.type) {
+		case 'SET_USER':
+			newState = Object.assign({}, state, {
+				loginState: 'Login2',
+				userImage: action.userImage,
+				userName: action.userName,
+				userEmail: action.userEmail
+			});
+			break;
+		case 'LOG_IN':
+			newState = Object.assign({}, state, {
+				loginState : 'LoggedIn'
+			});
+			break;
+		default:
+			newState = Object.assign({}, state);
+	}
+	
+	return newState;
 }
 
 
 // A method for creating a Redux store from a reduction method.
-const { createStore } = Redux;
+import { createStore } from 'redux';
 // A Redux data store for the Login application.
-const store = createStore(login);
+const loginStore = createStore(login, { loginState: 'Login' });
 
 
-
-const render = () => {
-	
-}
-
-store.subscribe(render);
+export default loginStore

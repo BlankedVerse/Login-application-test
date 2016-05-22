@@ -6,54 +6,55 @@ import React from 'react'
 import { render } from 'react-dom'
 
 
-const defaultColumnCount = 3;
+// The default number of columns to sort the grid by.
+const columnCount = 3;
 
 
 // A list of applications used in the component.
 const appList = [{
 		name: 'Interop',
 		image: '../assets/interop.png',
-		link: '#'
+		link: '#/apps'
 	},
 	{
 		name: 'PHC Hub',
 		image: '../assets/phchub.png',
-		link: '#'
+		link: '#/apps'
 	},
 	{
 		name: 'ImmuCast',
 		image: '../assets/immucast.png',
-		link: '#'
+		link: '#/apps'
 	},
 	{
 		name: 'SENTINEL',
 		image: '../assets/sentinel.png',
-		link: '#'
+		link: '#/apps'
 	},
 	{
 		name: 'SMaRT',
 		image: '../assets/smart.png',
-		link: '#'
+		link: '#/apps'
 	},
 	{
 		name: 'ImmsLink',
 		image: '../assets/immslink.png',
-		link: '#'
+		link: '#/apps'
 	},
 	{
 		name: 'MyIR',
 		image: '../assets/myir.png',
-		link: '#'
+		link: '#/apps'
 	},
 	{
 		name: 'OMS+',
 		image: '../assets/oms.png',
-		link: '#'
+		link: '#/apps'
 	},
 	{
 		name: 'VOMS',
 		image: '../assets/voms.png',
-		link: '#'
+		link: '#/apps'
 	},
 ];
 
@@ -83,14 +84,7 @@ class AppGrid extends React.Component {
 		let appIndex = 0;
 		let rows = [];
 		let rowButtons = [];
-		let columns = 0;
-		
-		if (this.props.columns === undefined) {
-			columns = defaultColumnCount;
-		}
-		else {
-			columns = this.props.columns;
-		}
+		let columns = columnCount;
 		
 		for (let i = 0; i < appList.length; i++) {
 			rowButtons.push(

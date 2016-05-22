@@ -5,11 +5,17 @@
 import React from 'react'
 import { render } from 'react-dom'
 
+import NavBar from './NavBar';
+import loginStore from '../scripts/stateManagement';
+
 
 // Name:		LoginHeader
 // Description:	A component that displays the WSDoH company logo.
-const LoginHeader = ({status}) => {
+const LoginHeader = () => {
+	let status = loginStore.getState();
+	
 	return (<div>
+			{ (status.loginState === 'LoggedIn') ? <NavBar /> : '' }
 			<img src='../assets/wdohLogo.png' />
 		</div>
 	);

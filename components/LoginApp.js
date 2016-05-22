@@ -3,26 +3,68 @@
 //				State Department of Health website.
 
 import React from 'react'
+import ReactDOM from 'react'
 import { render } from 'react-dom'
-import { hashHistory, Router, Route, Link, withRouter } from 'react-router'
-// TODO: Import css
-
-import LoginFooter from './FooterBanner';
-import LoginHeader from './HeaderBanner';
-import NavBar from './NavBar';
-import AppGrid from './AppGrid';
 
 
-// How many columns should be used for the app selection screen.
-const numberOfColumns = 3;
+import Validation from '../scripts/validation';
+import loginStore from '../scripts/stateManagement';
 
 
-// Name:		emailEntry
-// Description: A component that allows the user to type in their email address.
-//				Is replaced with userInfo() when a valid email has been entered.
+
+// Name:		CheckEmail
+// Description:	An event handler that checks the email address as it is
+//				being typed in. If it matches one on record, the state of
+//				the page is adjusted with the retrieved information.
+const CheckEmail = () => {
+	let enteredEmail = document.getElementById('inputEmail').value;
+	let foundRecord = Validation.prototype.findRecord(enteredEmail);
+	
+	
+	if (foundRecord) {
+		loginStore.dispatch({
+			type: 'SET_USER',
+			userImage: foundRecord.userImage,
+			userName: foundRecord.userName,
+			userEmail: foundRecord.userEmail
+		});
+	}
+}
+
+
+
+// Name:		CheckPassword
+// Description:	An event handler that checks the password the user
+//				has entered. If it matches with the credentials on
+//				record, they are logged in.
+const CheckPassword = () => {
+	let enteredPass = document.getElementById("inputPassword").value;
+	let userEmail = loginStore.getState().userEmail;
+
+	
+	if (userEmail !== undefined) {
+		if (Validation.prototype.checkPassword(userEmail, enteredPass)) {
+			console.log("Logging in");
+			loginStore.dispatch({
+				type: 'LOG_IN'
+			});
+		}
+		else {
+			//TODO: Shake password field on failure.
+		}
+	}
+}
+
+
+
+// Name:		EmailEntry
+// Description: A component that allows the user to type in their email 
+//				address. Is replaced with userInfo() when a valid email 
+//				has been entered.
 const EmailEntry = () => {
 	return (<div>
-			<input type="email" id="inputEmail" class="form-control" placeholder="EMAIL" required autofocus />
+			<input type="email" id="inputEmail" class="form-control" 
+				placeholder="EMAIL" required autofocus />
 		</div>
 	);
 }
@@ -31,10 +73,13 @@ const EmailEntry = () => {
 
 // Name:		userInfo
 // Description:	A component that displays the user's name, email address, and
-//				picture. Replaces emailEntry() once a valid email has been entered.
-// Parameter:	The user's status, containing userImage, userName, and userEmail
-//				values.
-const UserInfo = (userStatus) => {
+//				picture. Replaces emailEntry() once a valid email has been
+//				entered.
+// Parameter:	The user's status, containing userImage, userName, and
+//				userEmail values.
+const UserInfo = () => {
+	let userStatus = loginStore.getState()
+	
 	return (<div>
 			<img src={ userStatus.userImage } />
 			<h2>{ userStatus.userName }</h2>
@@ -66,25 +111,30 @@ class LoginApp extends React.Component {
 	// Name:		Render
 	// Description:	Renders the login controls for the page.
 	render() {
-		var state = {
-			loginState: 'Login'
-		}
+		let userStatus = loginStore.getState();
 		
-		// Only display the email entry on the first login page, not the second.
-		return (<div class="container" >
-				<LoginHeader status={ state.loginState } />
-				{ (state.loginState === 'AppSelect') ? <NavBar /> : '' }
-				<form class="form-signin">
-					<h2 class="form-signin-heading">Please sign in</h2>
-					{ (state.loginState === 'Login') ? <EmailEntry /> : UserInfo(state) }
-					<PasswordEntry />
-					<button class="btn btn-lg btn-primary btn-block" type="submit">SIGN IN</button>
-				</form>
-				<AppGrid columns={ numberOfColumns } />
-				<LoginFooter status={ state.loginState } />
-			</div>
+		return (<form class="form-signin">
+				{ (userStatus.loginState === 'Login') ? <EmailEntry /> :
+					<UserInfo /> }
+				<PasswordEntry />
+				<button class="btn btn-lg btn-primary btn-block"
+					id='submitLogin' type="submit">
+					{ (userStatus.loginState === 'Login') ? 'SIGN IN' : 'NEXT' }
+				</button>
+			</form>
 		);
 	}
+	
+	
+	componentDidMount() {
+		if (loginStore.getState().loginState === 'Login') {
+			document.getElementById('inputEmail').addEventListener("keyup", 
+				CheckEmail);
+		}
+		document.getElementById('submitLogin').addEventListener("click", 
+			CheckPassword);
+	}
 }
+
 
 export default LoginApp
